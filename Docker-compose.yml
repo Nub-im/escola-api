@@ -1,0 +1,12 @@
+services:
+  api:
+    container_name: escola-api
+    # Constrói a imagem a partir do Dockerfile no diretório atual.
+    build: .
+    ports:
+      # Mapeia a porta 8000 do seu computador para a porta 8000 do contêiner.
+      - "8000:8000"
+    volumes:
+      # Monta o diretório atual no contêiner para refletir as alterações no código em tempo real.
+      - .:/app
+    command: uvicorn app:app --host 0.0.0.0 --reload
